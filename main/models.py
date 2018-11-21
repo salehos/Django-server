@@ -8,7 +8,16 @@ class Food(models.Model):
     name = models.CharField(max_length=128 , default="food")
     description = models.CharField(max_length=512)
     create_date = models.DateTimeField(auto_now_add=True)
-    pictue = models.FileField(blank=True , null=True , upload_to="static/food_pics/")
+    image = models.FileField(blank=True , null=True , upload_to="static/food_pics/")
 
-    def image_tag(selfs):
-        return mark_safe("<img src='%S' style='max-width:250px ; height = auto'/>" % selfs)
+    def image_tag(self):
+        return mark_safe("<img src='%S' style='max-width:250px ; height = auto'/>" % self.image)
+
+class User :
+    name = models.CharField(max_length=128)
+    family = models.CharField(max_length=128)
+
+
+class Order(models.Model):
+    food = models.ForeignKey(Food, on_delete=models.CASCADE)
+    user = models.ForeignKey()
