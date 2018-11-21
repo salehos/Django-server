@@ -21,5 +21,5 @@ from main import views
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
-                  path('login/', views.login)
+                  path('login/', views.login_)
               ] + static(settings.STATIC_URL, document_root=settings.SITE_ROOT)

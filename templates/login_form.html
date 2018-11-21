@@ -35,6 +35,11 @@
 
 <body>
 <div class="container-fluid">
+    {% if error %}
+    <div class = alert-danger>
+        username or password is invalid
+    </div>
+    {% endif %}
     <div class="row">
         <div class="col-3"></div>
         <div class="col-6">
@@ -50,14 +55,14 @@
                                         </h3>
                                     </div>
                                     <div class="card-body">
-                                        <form>
+                                        <form action="." method="post">{% csrf_token %}
                                             <div class="input-group">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">
                                                         <i class="fa fa-user-o"></i>
                                                     </span>
                                                 </div>
-                                                <input type="text" class="form-control">
+                                                <input type="text" name = "username" class="form-control">
                                             </div>
                                             <div class="input-group" style="margin-top: 15px;">
                                                 <div class="input-group-prepend">
@@ -65,7 +70,7 @@
                                                         <i class="fa fa-key"></i>
                                                     </span>
                                                 </div>
-                                                <input type="password" class="form-control">
+                                                <input type="password" name = "password" class="form-control">
                                             </div>
                                             <button style="margin-top: 15px;" class="btn btn-success btn-block">Login</button>
                                         </form>
