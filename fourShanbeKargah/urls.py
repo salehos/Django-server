@@ -20,6 +20,8 @@ from fourShanbeKargah import settings
 from main import views
 
 urlpatterns = [
+                  path('', views.index),
                   path('admin/', admin.site.urls),
-                  path('login/', views.login_)
+                  path('login/', views.login_),
+                  path('logout', views.logout)
               ] + static(settings.STATIC_URL, document_root=settings.SITE_ROOT)

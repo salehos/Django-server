@@ -24,8 +24,8 @@
         }
         @font-face {
             font-family: 'samim';
-            src: url('fonts/Samim.eot');
-            src: url('fonts/Samim.woff') format('woff'), url('fonts/Samim.woff') format('woff');
+            src: url('/static/fonts/Samim.eot');
+            src: url('/static/fonts/Samim.woff') format('woff'), url('/static/fonts/Samim.woff') format('woff');
             font-weight: normal;
             font-style: normal;
         }
@@ -125,12 +125,13 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card-deck">
+                            {% for food in foods %}
                             <div class="card border-success">
-                                <img class="card-img-top" src="images/5a94edc3c292d.jpg" alt="غذای خوب">
+                                <img class="card-img-top" src="/{{ food.picture }}" alt=" غذای خوب ">
                                 <div class="card-body text-success text-right rtl-text">
-                                    <h5 class="card-title">باقالی‌پلو با مرغ</h5>
+                                    <h5 class="card-title">{{ food.name }}</h5>
                                     <p class="card-text small">
-                                        گوشت ران مرغ تازه به همراه ۲۵۰ گرم باقالی‌پلو
+                                        {{ food.description }}
                                     </p>
                                 </div>
                                 <div class="card-footer">
@@ -139,6 +140,7 @@
                                     </small>
                                 </div>
                             </div>
+                            {% endfor %}
                             <div class="card">
                                 <img class="card-img-top" src="images/5a94f39fd8dde.jpg" alt="غذای خوب">
                                 <div class="card-body text-right rtl-text">

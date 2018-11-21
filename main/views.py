@@ -1,9 +1,12 @@
 from django.contrib.auth import authenticate, logout, login
-from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 
 
 # Create your views here.
+from main.models import Food
+
 
 def login_(request):
     username, password = "", ""
@@ -28,5 +31,11 @@ def logout_(request):
     logout(request)
     return HttpResponseRedirect("/")
 
+
+@login_required(login_url="/login")
 def index(request):
-    pass
+    foods = Food.objects.all()
+    return render(request, 'order.html' , {
+        "foods" : foods
+    })
+
