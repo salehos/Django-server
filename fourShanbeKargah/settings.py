@@ -22,8 +22,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'a*o4n0-gzhhvh-381oj@6bj_l8peyg07ojkb!da9f^9bh+z1cq'
 
+# SECRET_KEY ye chizie ke ramzo usero ina ba in save mishe kh khatar nake nabayad bedim be kasi
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG ham baes mishe betonan be ga bedan saitetono
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main.apps.MainConfig'
 ]
 
 MIDDLEWARE = [
@@ -104,9 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fa-IR'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/tehran'
 
 USE_I18N = True
 
@@ -117,5 +121,4 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-
 STATIC_URL = '/static/'
