@@ -22,6 +22,6 @@ class UserAdmin(admin.ModelAdmin):
 
 admin.site.register(User, UserAdmin)
 
-
-class OrderAdmin(admin.ModelAdmin):
-    pass
+#
+# class OrderAdmin(admin.ModelAdmin):
+#     pass
