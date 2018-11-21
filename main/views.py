@@ -1,8 +1,8 @@
+import reserve as reserve
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
-
 
 # Create your views here.
 from main.models import Food
@@ -35,7 +35,21 @@ def logout_(request):
 @login_required(login_url="/login")
 def index(request):
     foods = Food.objects.all()
-    return render(request, 'order.html' , {
-        "foods" : foods
+    return render(request, 'order.html', {
+        "foods": foods
     })
 
+
+@login_required(login_url="/login")
+def reserve_food(request, food_type="lunch", food_id=None):
+    try:
+        food = Food.objects.get(id=food_id)
+        reserve_obj = reserve()
+        reserve_obj.food = food
+        reserve_obj.user = request.user
+        reserve_obj.reserve_date = request.datetime.now()
+        reserve_obj.save()
+    except Exception as exp:
+        return HttpResponse("error")
+
+# Emailesh : soleimany@outlook.com
